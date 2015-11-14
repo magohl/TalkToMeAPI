@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TalkToMeAPI - Loudspeaker UI</title>
+    <script type="text/javascript" src="~/Scripts/mespeak/mespeak.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script type="text/javascript">
+        meSpeak.loadConfig('/mespeak_config.json');
+        //meSpeak.loadVoice('/mespeak_voice_sv.json');
+        meSpeak.loadVoice('/mespeak_voice_en-us.json');
+        $(document).ready(function () {
+            meSpeak.speak('1');
+        });
+
+        var loudspeaker = $.connection.talkToMeHub;
+        loudspeaker.client.speak = function (textToRead, speed) {
+            meSpeak.speak(textToRead);
+        };
+        $.connection.hub.start().done(function () {
+        });
+
+
+    </script>
+</head>
+<body>
+    <div>
+        Loudspeaker!
+    </div>
+</body>
+</html>

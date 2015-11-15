@@ -1,12 +1,22 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
-    <title>TalkToMeAPI - Loudspeaker UI</title>
+    <title>TalkToMeAPI - Api App UI</title>
     <script type="text/javascript" src="~/Scripts/mespeak/mespeak.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
+</head>
+<body>
+    <div id="status">
+        <button class="btn btn-primary" type="button" id="statusButton">
+            Connecting... <span class="badge">0</span>
+        </button>
+    </div>
+
     <script type="text/javascript">
         meSpeak.loadConfig('/mespeak_config.json');
         //meSpeak.loadVoice('/mespeak_voice_sv.json');
@@ -19,15 +29,13 @@
         loudspeaker.client.speak = function (textToRead, speed) {
             meSpeak.speak(textToRead);
         };
+
         $.connection.hub.start().done(function () {
+            $('#statusButton span').text('Some Remove Text');
         });
 
 
     </script>
-</head>
-<body>
-    <div>
-        Loudspeaker!
-    </div>
+
 </body>
 </html>

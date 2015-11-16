@@ -1,40 +1,83 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>TalkToMeAPI - Api App UI</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+
     <script type="text/javascript" src="~/Scripts/mespeak/mespeak.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/sweetalert/sweetalert.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
 </head>
 <body>
-    <div id="status">
-        <button class="btn btn-primary" type="button" id="statusButton">
-            Connecting... <span class="badge">0</span>
-        </button>
+    <div class="alert alert-danger fade in" style="display:none;" id="status-error">
+        Error - not connected...
+    </div>
+    <div class="alert alert-info fade in" style="display:none;" id="status-connecting">
+        Trying to connect...
+    </div>
+    <div class="alert alert-success fade in" style="display:none;" id="status-ok">
+        Loudspeaker connected to your TalkToMe API APP. Turn up the volume :)
     </div>
 
     <script type="text/javascript">
         meSpeak.loadConfig('/mespeak_config.json');
-        //meSpeak.loadVoice('/mespeak_voice_sv.json');
         meSpeak.loadVoice('/mespeak_voice_en-us.json');
-        $(document).ready(function () {
-            meSpeak.speak('1');
-        });
+
+        swal({
+            title: "Connect?",
+            text: "Your browser will act as the API APP loudspeaker!",
+            imageUrl: "/Content/image_megaphone.png",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55", confirmButtonText: "Connect",
+            cancelButtonText: "No thanks!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    $('#status-connecting').show();
+                    $.connection.hub.start().done(function () {
+                        swal("Connected!", "Cool. This browser now act as the API APP loudspeaker", "success");
+                    });
+                } else {
+                    swal("Cancelled", "Refresh page if you change your mind", "error");
+                }
+            });
 
         var loudspeaker = $.connection.talkToMeHub;
+        $.connection.hub.stateChanged(connectionStateChanged);
+        
         loudspeaker.client.speak = function (textToRead, speed) {
             meSpeak.speak(textToRead);
         };
 
-        $.connection.hub.start().done(function () {
-            $('#statusButton span').text('Some Remove Text');
-        });
-
-
+        function connectionStateChanged(state) {
+            var stateConversion = { 0: 'connecting', 1: 'connected', 2: 'reconnecting', 4: 'disconnected' };
+            console.log('SignalR state changed from: ' + stateConversion[state.oldState]
+             + ' to: ' + stateConversion[state.newState]);
+            if (state.newState == 1) {
+                $('#status-ok').show();
+                $('#status-error').hide();
+                $('#status-connecting').hide();
+            }
+            else if (state.newState == 0 || state.newState == 2) {
+                $('#status-connecting').show();
+                $('#status-ok').hide();
+                $('#status-error').hide();
+            }
+            else if (state.newState == 4) {
+                $('#status-error').show();
+                $('#status-ok').hide();
+                $('#status-connecting').hide();
+            }
+        }
     </script>
 
 </body>

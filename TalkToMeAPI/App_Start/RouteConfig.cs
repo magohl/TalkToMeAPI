@@ -12,7 +12,7 @@ namespace TalkToMeAPI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "LoadSpeaker", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "LoudSpeaker", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

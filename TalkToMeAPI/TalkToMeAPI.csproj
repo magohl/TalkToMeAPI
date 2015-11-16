@@ -143,6 +143,7 @@
     <Content Include="Content\sweetalert.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="favicon.ico" />
     <Content Include="mespeak_voice_en-us.json" />
     <Content Include="mespeak_config.json" />
     <Content Include="mespeak_voice_sv.json" />

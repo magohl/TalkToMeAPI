@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>TalkToMeAPI - Api App UI</title>
+    <link rel="icon" href="~/Content/favicon.ico" type="image/vnd.microsoft.icon" />
 
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/sweetalert.css" rel="stylesheet" />
@@ -14,6 +15,21 @@
 
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
+
+    <style type="text/css">
+        .alert .glyphicon {
+            display: table-cell;
+        }
+        .alert div,
+        .alert span {
+            padding-left: 5px;
+            display: table-cell;
+        }
+         #footer {
+        background-color: #f5f5f5;
+      }
+    </style>
+
 </head>
 <body>
     <div class="alert alert-danger fade in" style="display:none;" id="status-error">
@@ -25,6 +41,18 @@
     <div class="alert alert-success fade in" style="display:none;" id="status-ok">
         Loudspeaker connected to your TalkToMe API APP. Turn up the volume :)
     </div>
+
+    <div class="alert alert-info fade in" id="last-message-alert" hidden="hidden">
+        <div class="glyphicon glyphicon-volume-up">
+        </div>
+        <div id="last-message"></div>
+    </div>
+    <div id="footer" class="navbar-fixed-bottom">
+        <div class="container">
+            <p class="muted credit">An Azure API APP proof-of-concept by <a href="http://soapfault.com/blog">Magnus Ohlsson</a></p>
+        </div>
+    </div>
+
 
     <script type="text/javascript">
         meSpeak.loadConfig('/mespeak_config.json');
@@ -51,10 +79,13 @@
                 }
             });
 
+
         var loudspeaker = $.connection.talkToMeHub;
         $.connection.hub.stateChanged(connectionStateChanged);
-        
+
         loudspeaker.client.speak = function (textToRead, speed) {
+            $("#last-message-alert").show();
+            $("#last-message").text("Last message : " + textToRead);
             meSpeak.speak(textToRead);
         };
 

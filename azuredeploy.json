@@ -7,7 +7,7 @@
     },
     "apiAppName": {
       "type": "string",
-      "defaultValue": "TalkToMe.APIApp"
+      "defaultValue": "TalkToMeAPI"
     },
     "gatewayName": {
       "type": "string"
@@ -40,18 +40,6 @@
         "2"
       ]
     },
-    "appId": {
-      "type": "string",
-      "defaultValue": "Generated key"
-    },
-   "apiKey": {
-      "type": "string",
-      "defaultValue": "HMAC generated API Key"
-    },
-   "basePath": {
-      "type": "string",
-      "defaultValue": "http"
-    },
     "gatewayToApiAppSecret": {
       "defaultValue": "VGFsa1RvTWVBUElBcHA=",
       "type": "securestring"
@@ -64,7 +52,7 @@
   "resources": [
     {
       "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2015-08-01",
+      "apiVersion": "2015-04-01",
       "name": "[parameters('svcPlanName')]",
       "location": "[resourceGroup().location]",
       "tags": {
@@ -79,7 +67,7 @@
     },
     {
       "type": "Microsoft.Web/sites",
-      "apiVersion": "2015-08-01",
+      "apiVersion": "2015-04-01",
       "name": "[parameters('gatewayName')]",
       "location": "[resourceGroup().location]",
       "kind": "gateway",
@@ -246,18 +234,6 @@
             {
               "name": "WEBSITE_START_SCM_ON_SITE_CREATION",
               "value": "1"
-            },
-            {
-              "name": "App_Id",
-              "value": "[parameters('appId')]"
-            },
-            {
-              "name": "Api_Key",
-              "value": "[parameters('apiKey')]"
-            },
-            {
-              "name": "Base_Path",
-              "value": "[parameters('basePath')]"
             }
           ]
         }

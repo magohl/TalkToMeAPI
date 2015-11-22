@@ -1,12 +1,10 @@
 # TalkToMeAPI - Text-to-speech Azure API App
 
-This is a simple proof-of-concept of a Azure API App to be used in a Azure Logic App.
+This is a simple proof-of-concept of a custom Azure API App to be used in a Azure Logic App.
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-There are two main parts. First the API that hosts a SignalR hub and the second one is the UI that connects one (or more) browser as the API App "Loudspeaker".
-
-As an Azure API App is just a 'normal' Web App it can host both
+There are two main parts. First the API that hosts a SignalR hub and the second one is the UI that connects one (or more) browser as the API App "Loudspeaker". As an Azure API App is just a 'normal' Web App it can host both and no other deployment is needed.
 
 - **WebAPI**
   - SignalR Hub
@@ -14,7 +12,7 @@ As an Azure API App is just a 'normal' Web App it can host both
   - [mespeak.js](http://www.masswerk.at/mespeak)
   - SignalR client
 
-My sample scenario was a Logic App getting weather data from api.openweathermap.com and have the TalkToMe API read it out.
+My first sample scenario used to try the API Appwas a Logic App getting weather data from api.openweathermap.com that the TalkToMe API then read out.
 
 ## How to use
 1. Deploy Azure API App

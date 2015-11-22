@@ -4,14 +4,14 @@ This is a simple proof-of-concept of a Azure API App to be used in a Azure Logic
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-There are two main parts. First the API that hosts a SignalR hub. Second part is the UI that connects a browser as the API App "Loudspeaker".
+There are two main parts. First the API that hosts a SignalR hub and the second one is the UI that connects one (or more) browser as the API App "Loudspeaker".
 
-As an Azure API App is just a 'normal' Web App it can host both parts and no separate installation is needed. The UI part consists of a simple HTML page (MVC controller/View) that uses [mespeak.js](http://www.masswerk.at/mespeak) text-to-speach javascript client library. I have only tried mespeak.js but i'm sure there are several others out there which would work just as good.
+As an Azure API App is just a 'normal' Web App it can host both
 
-- *WebAPI*
+- **WebAPI**
   - SignalR Hub
-- *Client UI*
-  - mespeak.js
+- **Client UI**
+  - [mespeak.js](http://www.masswerk.at/mespeak)
   - SignalR client
 
 My sample scenario was a Logic App getting weather data from api.openweathermap.com and have the TalkToMe API read it out.
@@ -31,7 +31,9 @@ My sample scenario was a Logic App getting weather data from api.openweathermap.
 
 
 ##Test using REST
+If you just want to try the API App out and verify that it works you can just post
 
+| REST param  | Value |
 | ------------- | ------------- |
 | URL     | http://{your-apiapp-url}/api/TalkToMe |
 | Method  | HTTP POST  |

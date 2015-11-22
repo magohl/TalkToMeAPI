@@ -29,7 +29,7 @@ My first sample scenario used to try the API Appwas a Logic App getting weather 
 
 
 ##Test using REST
-If you just want to try the API App out and verify that it works you can just post
+If you just want to try the API App out and verify that it works you use a simple REST call.
 
 | REST param  | Value |
 | ------------- | ------------- |

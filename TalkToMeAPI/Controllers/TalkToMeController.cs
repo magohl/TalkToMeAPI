@@ -10,7 +10,12 @@ namespace TalkToMeAPI.Controllers
     /// <summary>
     /// This API controller exposed as an API API will invoke the SignalR Hub
     /// thus invoking the text-to-speach client side javascript in the connected
-    /// browser. 
+    /// browser.
+    /// TO TEST TEST DIRECTLY MAKE A REQUEST LIKE THIS
+    /// Method: HTTP POST
+    /// URL: http://{your-apiapp-url}/api/TalkToMe
+    /// Content-Type : application/json
+    /// Body: { "TextToRead" : "Nice weather today" }
     /// </summary>
     public class TalkToMeController : ApiController
     {

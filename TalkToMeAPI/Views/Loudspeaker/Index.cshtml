@@ -3,8 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>TalkToMeAPI - Api App UI</title>
-    <link rel="icon" href="~/Content/favicon.ico" type="image/vnd.microsoft.icon" />
 
+    <link rel="icon" href="~/Content/favicon.ico" type="image/vnd.microsoft.icon" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/sweetalert.css" rel="stylesheet" />
 
@@ -39,7 +39,7 @@
         Trying to connect...
     </div>
     <div class="alert alert-success fade in" style="display:none;" id="status-ok">
-        Loudspeaker connected to your TalkToMe API APP. Turn up the volume :)
+        Connected. Use me in your Logic App or call me directly. Do not forget to turn up the volume!
     </div>
 
     <div class="alert alert-info fade in" id="last-message-alert" hidden="hidden">
@@ -47,17 +47,19 @@
         </div>
         <div id="last-message"></div>
     </div>
+
     <div id="footer" class="navbar-fixed-bottom">
         <div class="container">
-            <p class="muted credit">An Azure API APP proof-of-concept by <a href="http://soapfault.com/blog">Magnus Ohlsson</a></p>
+            <p class="muted credit">Azure API APP text-to-speech proof-of-concept by <a href="http://soapfault.com/blog" target="_blank">Magnus Ohlsson</a></p>
         </div>
     </div>
 
-
     <script type="text/javascript">
-        meSpeak.loadConfig('/mespeak_config.json');
-        meSpeak.loadVoice('/mespeak_voice_en-us.json');
+        //Load the mespeak configuration and language files
+        meSpeak.loadConfig('/mespeak/mespeak_config.json');
+        meSpeak.loadVoice('/mespeak/mespeak_voice_en-us.json');
 
+        //Prompt user
         swal({
             title: "Connect?",
             text: "Your browser will act as the API APP loudspeaker!",
@@ -70,9 +72,10 @@
         },
             function (isConfirm) {
                 if (isConfirm) {
+                    //Connect to the SignalR hub
                     $('#status-connecting').show();
                     $.connection.hub.start().done(function () {
-                        swal("Connected!", "Cool. This browser now act as the API APP loudspeaker", "success");
+                        swal("Connected!", "Cool. This browser now act as the API APP text-to-speach megaphone", "success");
                     });
                 } else {
                     swal("Cancelled", "Refresh page if you change your mind", "error");
@@ -83,6 +86,7 @@
         var loudspeaker = $.connection.talkToMeHub;
         $.connection.hub.stateChanged(connectionStateChanged);
 
+        //The SignaR entry point for method speak
         loudspeaker.client.speak = function (textToRead, speed) {
             $("#last-message-alert").show();
             $("#last-message").text("Last message : " + textToRead);
@@ -91,7 +95,7 @@
 
         function connectionStateChanged(state) {
             var stateConversion = { 0: 'connecting', 1: 'connected', 2: 'reconnecting', 4: 'disconnected' };
-            console.log('SignalR state changed from: ' + stateConversion[state.oldState]
+            console.log('Talktome SignalR state changed from: ' + stateConversion[state.oldState]
              + ' to: ' + stateConversion[state.newState]);
             if (state.newState == 1) {
                 $('#status-ok').show();

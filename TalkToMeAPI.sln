@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24627.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalkToMeAPI", "TalkToMeAPI\TalkToMeAPI.csproj", "{8AF03F93-7FC4-429B-9785-79B27BD84DB6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TalkToMeAPI.Tests", "TalkToMeAPI.Tests\TalkToMeAPI.Tests.csproj", "{29D2D757-67F8-4E0F-8762-996D6ACD3342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{8AF03F93-7FC4-429B-9785-79B27BD84DB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AF03F93-7FC4-429B-9785-79B27BD84DB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AF03F93-7FC4-429B-9785-79B27BD84DB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29D2D757-67F8-4E0F-8762-996D6ACD3342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29D2D757-67F8-4E0F-8762-996D6ACD3342}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29D2D757-67F8-4E0F-8762-996D6ACD3342}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29D2D757-67F8-4E0F-8762-996D6ACD3342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

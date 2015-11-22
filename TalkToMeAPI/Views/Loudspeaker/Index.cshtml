@@ -86,6 +86,12 @@
         var loudspeaker = $.connection.talkToMeHub;
         $.connection.hub.stateChanged(connectionStateChanged);
 
+        $.connection.hub.disconnected(function () {
+            setTimeout(function () {
+                $.connection.hub.start();
+            }, 5000); // Restart connection after 5 seconds.
+        });
+
         //The SignaR entry point for method speak
         loudspeaker.client.speak = function (textToRead, speed) {
             $("#last-message-alert").show();

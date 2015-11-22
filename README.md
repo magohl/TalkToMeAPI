@@ -4,17 +4,19 @@ This is a simple proof-of-concept of a Azure API App to be used in a Azure Logic
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-As Azure API App is just a 'normal' Web App it can host both the API aswell as the simple HTML page (MVC controller and View) that uses [mespeak.js](http://www.masswerk.at/mespeak) text-to-speach javascript client library. I have only tried the mespeak library but i'm sure there are several others out there which would work just as good.
+There are two main parts. First the API that hosts a SignalR hub. Second part is the UI that connects a browser as the API App "Loudspeaker".
 
-- WebAPI
+As an Azure API App is just a 'normal' Web App it can host both parts and no separate installation is needed. The UI part consists of a simple HTML page (MVC controller/View) that uses [mespeak.js](http://www.masswerk.at/mespeak) text-to-speach javascript client library. I have only tried mespeak.js but i'm sure there are several others out there which would work just as good.
+
+- *WebAPI*
   - SignalR Hub
-- Client UI (HTML/MVC)
+- *Client UI*
   - mespeak.js
   - SignalR client
 
-My sample scenario was a Logic App getting the weather from api.openweathermap.com and have the TalkToMe API read the weather.
+My sample scenario was a Logic App getting weather data from api.openweathermap.com and have the TalkToMe API read it out.
 
-### How to use
+## How to use
 1. Deploy Azure API App
 2. Create and deploy a Logic App where TalkToMe is used as an 'action'
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325058/07c80bfe-9144-11e5-8cbf-362b550b36a5.png)
@@ -27,10 +29,8 @@ My sample scenario was a Logic App getting the weather from api.openweathermap.c
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325065/480cb1ce-9144-11e5-8bda-1fc04134ce3a.png)
 
 
-###Test using REST
+##Test using REST
 
-| First Header  | Second Header |
-| ------------- | ------------- |
 | URL     | http://{your-apiapp-url}/api/TalkToMe |
 | Method  | HTTP POST  |
 | Content-Type  | application/json  |

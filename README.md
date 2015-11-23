@@ -12,7 +12,7 @@ There are two main parts. First the API that hosts a SignalR hub and the second 
   - [mespeak.js](http://www.masswerk.at/mespeak)
   - SignalR client
 
-My first sample scenario used to try the API Appwas a Logic App getting weather data from api.openweathermap.com that the TalkToMe API then read out.
+My first sample scenario used to try the API App was a Logic App getting weather data from api.openweathermap.com that the TalkToMe API then read out.
 
 ## How to use
 1. Deploy Azure API App

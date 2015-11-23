@@ -24,6 +24,7 @@ My first sample scenario used to try the API App was a Logic App getting weather
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325079/939c1bb6-9144-11e5-8c1c-d80669ff5165.png)
 
 4. Run the Logic App
+
 When the logic app runs and the TalkToMe action fires you should hear the artificial voice talk.
 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325065/480cb1ce-9144-11e5-8bda-1fc04134ce3a.png)

@@ -4,7 +4,7 @@ This is a simple and hopefully fun proof-of-concept of a custom Azure API App to
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-There are two main parts. First the API that hosts a SignalR hub and the second one is the UI that connects one (or more) browser as the API App "Loudspeaker". As an Azure API App is just a 'normal' Web App it can host both and no other deployment is needed.
+There are two main parts. First the API that hosts a SignalR hub and the second one is the UI that connects one (or more) browser as the API App "Loudspeaker". An Azure API App is just like any 'normal' Web App so it can host both parts and no other deployment is needed.
 
 - **WebAPI**
   - SignalR Hub
@@ -12,7 +12,7 @@ There are two main parts. First the API that hosts a SignalR hub and the second 
   - [mespeak.js](http://www.masswerk.at/mespeak)
   - SignalR client
 
-My first sample scenario used to try the API App was a Logic App getting weather data from api.openweathermap.com that TalkToMe API will read out.
+My first sample scenario used to try the API App was a Logic App getting weather data from api.openweathermap.com that TalkToMe API will read out. Note that by design the API will return 202/Accepted even if no browser (ie. SignalR client) is connected and no queuing or simmilar is performed.
 
 ## How to use
 1. Deploy Azure API App
@@ -25,8 +25,10 @@ My first sample scenario used to try the API App was a Logic App getting weather
 
 4. Run the Logic App
 
-When the logic app runs and the TalkToMe action fires you should hear the artificial voice talk.
+When the logic app runs and the TalkToMe action fires the portal should show something like
+![image](https://cloud.githubusercontent.com/assets/1846780/11345289/38cb43e2-9216-11e5-8e35-3f3078ef5cc1.png)
 
+And you should hear the artificial voice in your speaker:
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325065/480cb1ce-9144-11e5-8bda-1fc04134ce3a.png)
 
 

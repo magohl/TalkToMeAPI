@@ -1,6 +1,6 @@
 # TalkToMeAPI - Text-to-speech Azure API App
 
-This is a simple proof-of-concept of a custom Azure API App to be used in a Azure Logic App.
+This is a simple and hopefully fun proof-of-concept of a custom Azure API App to be used in a Azure Logic App.
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
@@ -12,25 +12,25 @@ There are two main parts. First the API that hosts a SignalR hub and the second 
   - [mespeak.js](http://www.masswerk.at/mespeak)
   - SignalR client
 
-My first sample scenario used to try the API App was a Logic App getting weather data from api.openweathermap.com that the TalkToMe API then read out.
+My first sample scenario used to try the API App was a Logic App getting weather data from api.openweathermap.com that TalkToMe API will read out.
 
 ## How to use
 1. Deploy Azure API App
 2. Create and deploy a Logic App where TalkToMe is used as an 'action'
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325058/07c80bfe-9144-11e5-8cbf-362b550b36a5.png)
   
-3. Connect one or more browsers to the API by browsing the API root URL
+3. Connect one or more browsers to the API by browsing the root URL of the deployed API. If you are unsure of the URL you can find the link in the 'essentials' section of the API App in the portal. 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325090/0b3af8ae-9145-11e5-90b6-41bee2edac9c.png)
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325079/939c1bb6-9144-11e5-8c1c-d80669ff5165.png)
 
 4. Run the Logic App
-When the TalkToMe action fires you should hear the artificial voice talk.
+When the logic app runs and the TalkToMe action fires you should hear the artificial voice talk.
 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325065/480cb1ce-9144-11e5-8bda-1fc04134ce3a.png)
 
 
-##Test using REST
-If you just want to try the API App outside of an Lgic App and simply verify that it works you use a simple REST call like this.
+##Test API using HTTP
+If you just want to try the API App, outside of an Logic App, you can use a simple REST call.
 
 | REST param  | Value |
 | ------------- | ------------- |

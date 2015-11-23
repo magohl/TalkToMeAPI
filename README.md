@@ -17,7 +17,7 @@ My first sample scenario used to try the API App was a Logic App getting weather
 ## How to use
 1. Deploy Azure API App
 2. Create and deploy a Logic App where TalkToMe is used as an 'action'
-![image](https://cloud.githubusercontent.com/assets/1846780/11325058/07c80bfe-9144-11e5-8cbf-362b550b36a5.png)
+![image](https://cloud.githubusercontent.com/assets/1846780/11345418/14d798f4-9217-11e5-9497-3868c2609ea0.png)
   
 3. Connect one or more browsers to the API by browsing the root URL of the deployed API. If you are unsure of the URL you can find the link in the 'essentials' section of the API App in the portal. 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325090/0b3af8ae-9145-11e5-90b6-41bee2edac9c.png)

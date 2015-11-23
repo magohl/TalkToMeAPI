@@ -24,12 +24,13 @@ My first sample scenario used to try the API Appwas a Logic App getting weather 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325079/939c1bb6-9144-11e5-8c1c-d80669ff5165.png)
 
 4. Run the Logic App
+When the TalkToMe action fires you should hear the artificial voice talk.
 
 ![image](https://cloud.githubusercontent.com/assets/1846780/11325065/480cb1ce-9144-11e5-8bda-1fc04134ce3a.png)
 
 
 ##Test using REST
-If you just want to try the API App out and verify that it works you use a simple REST call.
+If you just want to try the API App outside of an Lgic App and simply verify that it works you use a simple REST call like this.
 
 | REST param  | Value |
 | ------------- | ------------- |
